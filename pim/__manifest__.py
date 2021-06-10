@@ -3,11 +3,15 @@
 
 {
     "name": "Product Information Management",
-    "version": "13.0.1.0.1",
+    "version": "13.0.1.0.2",
     "license": "AGPL-3",
     "author": "Akretion,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/odoo-pim",
-    "depends": ["product", "product_attribute_set"],
+    "depends": [
+        "product",
+        "product_attribute_set",
+        "product_attribute_set_completeness",
+    ],
     "data": [
         "data/ir_module_category_data.xml",
         "security/pim_security.xml",
