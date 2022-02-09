@@ -65,7 +65,6 @@ class AttributeAttribute(models.Model):
     )
 
     serialized = fields.Boolean(
-        "Serialized",
         help="""If serialized, the attribute's field will be stored in the serialization
             field 'x_custom_json_attrs' (i.e. a JSON containing all the serialized
             fields values) instead of creating a new SQL column for this
@@ -241,16 +240,14 @@ class AttributeAttribute(models.Model):
         if self.domain not in ["", False]:
             try:
                 ast.literal_eval(self.domain)
-            except ValueError:
-                raise ValidationError(
+            except ValueError as err:
+                raise ValidationError from err(
                     _(
-                        """ "{}" is an unvalid Domain name.\n
+                        """ "%(domain)s" is an unvalid Domain name.\n
                         Specify a Python expression defining a list of triplets.\
-                        For example : "[('color', '=', 'red')]" """.format(
-                            self.domain
-                        )
+                        For example : "[('color', '=', 'red')]" """
                     )
-                )
+                ) % {"domain": self.domain}
             # Remove selected options as the domain will predominate on actual options
             if self.domain != "[]":
                 self.option_ids = [(5, 0)]
@@ -354,7 +351,7 @@ class AttributeAttribute(models.Model):
                 }
 
                 vals["serialization_field_id"] = (
-                    field_obj.with_context({"manual": True}).create(f_vals).id
+                    field_obj.with_context(manual=True).create(f_vals).id
                 )
 
         vals["state"] = "manual"
@@ -464,7 +461,7 @@ class AttributeAttribute(models.Model):
         return res
 
     def unlink(self):
-        """ Delete the Attribute's related field when deleting a custom Attribute"""
+        """Delete the Attribute's related field when deleting a custom Attribute"""
         fields_to_remove = self.filtered(lambda s: s.nature == "custom").mapped(
             "field_id"
         )

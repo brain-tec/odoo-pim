@@ -61,12 +61,12 @@ class AttributeSetOwnerMixin(models.AbstractModel):
         if len(placeholder) != 1:
             raise ValidationError(
                 _(
-                    """It is impossible to add Attributes on "{}" xml view as there is
-                    not one "<separator name="attributes_placeholder" />" in it.
-                    """.format(
-                        form_name
-                    )
+                    """It is impossible to add Attributes on
+                    "%(form_name)s" xml view as there is not one
+                     "<separator name="attributes_placeholder" />" in it.
+                    """
                 )
+                % {"form_name": form_name}
             )
 
         if self._context.get("include_native_attribute"):
