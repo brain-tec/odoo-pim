@@ -8,10 +8,10 @@ import ast
 from lxml import etree
 from odoo_test_helper import FakeModelLoader
 
-from odoo.tests import SavepointCase
+from odoo.tests import TransactionCase
 
 
-class BuildViewCase(SavepointCase):
+class BuildViewCase(TransactionCase):
     @classmethod
     def _create_set(cls, name):
         return cls.env["attribute.set"].create({"name": name, "model_id": cls.model_id})

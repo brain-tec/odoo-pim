@@ -4,3 +4,4 @@
 * Akretion Raphaël VALYI <raphael.valyi@akretion.com>
 * David Dufresne <david.dufresne@savoirfairelinux.com>
 * Denis Roussel <denis.roussel@acsone.eu>
+* Brain-tec <info@bt-group.com>

@@ -1,4 +1,4 @@
-Even if this module does not provide views to display some model's Attributes, it provides however a Technical menu in *Settings > Technical > Database Structure > Attributes* to **create new Attributes**.
+Even if this module does not provide views to display some model's Attributes, it provides however a Technical menu in *Settings > Technical > Attributes* to **create new Attributes**.
 
 An Attribute is related to both an Attribute Group and an Attribute Set :
 

@@ -17,9 +17,10 @@ msgstr ""
 #: code:addons/attribute_set/models/attribute_attribute.py:0
 #, python-format
 msgid ""
-" \"{}\" is an unvalid Domain name.\n"
+" \"%(domain)s\" is an unvalid Domain name.\n"
 "\n"
-"                        Specify a Python expression defining a list of triplets.                        For example : \"[('color', '=', 'red')]\" "
+"                        Specify a Python expression defining a list of "
+"triplets.                        For example : \"[('color', '=', 'red')]\" "
 msgstr ""
 
 #. module: attribute_set
@@ -390,8 +391,10 @@ msgstr ""
 #: code:addons/attribute_set/models/attribute_set_owner.py:0
 #, python-format
 msgid ""
-"It is impossible to add Attributes on \"{}\" xml view as there is\n"
-"                    not one \"<separator name=\"attributes_placeholder\" />\" in it.\n"
+"It is impossible to add Attributes on\n"
+"                    \"%(form_name)s\" xml view as there is not one\n"
+"                     \"<separator name=\"attributes_placeholder\" />\" in "
+"it.\n"
 "                    "
 msgstr ""
 

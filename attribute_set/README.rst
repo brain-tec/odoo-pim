@@ -23,7 +23,7 @@ Attribute Set
     :target: https://runbot.odoo-community.org/runbot/295/14.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module allows the user to create Attributes to any model.
 This is a basic module in the way that **it does not provide views to display these new Attributes.**
@@ -45,7 +45,7 @@ It means that all the serialized attributes will be stored in a single "JSON ser
 Usage
 =====
 
-Even if this module does not provide views to display some model's Attributes, it provides however a Technical menu in *Settings > Technical > Database Structure > Attributes* to **create new Attributes**.
+Even if this module does not provide views to display some model's Attributes, it provides however a Technical menu in *Settings > Technical > Attributes* to **create new Attributes**.
 
 An Attribute is related to both an Attribute Group and an Attribute Set :
 
@@ -90,6 +90,8 @@ Contributors
 * Akretion Raphaël VALYI <raphael.valyi@akretion.com>
 * David Dufresne <david.dufresne@savoirfairelinux.com>
 * Denis Roussel <denis.roussel@acsone.eu>
+* Brain-tec <info@bt-group.com>
+
 
 Maintainers
 ~~~~~~~~~~~
