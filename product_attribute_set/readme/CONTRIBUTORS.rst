@@ -4,3 +4,4 @@
 * David Dufresne <david.dufresne@savoirfairelinux.com>
 * El Hadji Dem <elhadji.dem@savoirfairelinux.com>
 * Denis Roussel <denis.roussel@acsone.eu>
+* Brain-tec <info@bt-group.com>
