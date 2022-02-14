@@ -25,7 +25,8 @@
                     groups="uom.group_uom"
                 />
                 <field name="attribute_set_id" />
-                <field
+                <!-- Decided to not migrate module product_attribute_set_completeness on 14.02.2022 -->
+<!--            <field
                     widget="label_selection"
                     name="attribute_set_completion_state"
                     options="{'classes': {'complete': 'success', 'not_complete': 'danger'}}"
@@ -40,7 +41,7 @@
                             ('attribute_set_completion_state', '=', 'complete'),
                         ],
                     }"
-                />
+                />-->
             </tree>
         </field>
     </record>

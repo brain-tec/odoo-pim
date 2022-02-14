@@ -10,7 +10,8 @@
     "depends": [
         "product",
         "product_attribute_set",
-        "product_attribute_set_completeness",
+        # Decided to not migrate module product_attribute_set_completeness on 14.02.2022
+        # "product_attribute_set_completeness",
     ],
     "data": [
         "data/ir_module_category_data.xml",

@@ -23,7 +23,7 @@ Product Information Management
     :target: https://runbot.odoo-community.org/runbot/295/14.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 A basic module for Product Information Management.
 
@@ -74,6 +74,7 @@ Contributors
 * Clément Mombereau <clement.mombereau@akretion.com.br>
 * Cédric PIGEON <cedric.pigeon@acsone.eu>
 * Denis Roussel <denis.roussel@acsone.eu>
+* Brain-tec <info@bt-group.com>
 
 Maintainers
 ~~~~~~~~~~~

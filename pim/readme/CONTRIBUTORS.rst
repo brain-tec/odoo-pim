@@ -2,3 +2,4 @@
 * Clément Mombereau <clement.mombereau@akretion.com.br>
 * Cédric PIGEON <cedric.pigeon@acsone.eu>
 * Denis Roussel <denis.roussel@acsone.eu>
+* Brain-tec <info@bt-group.com>
