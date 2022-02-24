@@ -298,7 +298,9 @@ class BuildViewCase(TransactionCase):
     def test_unlink_custom_attribute(self):
         attr_1_field_id = self.attr_1.field_id.id
         self.attr_1.unlink()
-        self.assertFalse(self.env["ir.model.fields"].sudo().browse([attr_1_field_id]).exists())
+        self.assertFalse(
+            self.env["ir.model.fields"].sudo().browse([attr_1_field_id]).exists()
+        )
 
     def test_unlink_native_attribute(self):
         attr_native_field_id = self.attr_native.field_id.id
