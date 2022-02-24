@@ -10,7 +10,7 @@ class ProductTemplate(models.Model):
     """The mixin 'attribute.set.owner.mixin' override the model's fields_view_get()
     method which will replace the 'attributes_placeholder' by a group made up of all
     the product.template's Attributes.
-    Each Attribute will have a conditional invisibility depending on its Attriute Sets.
+    Each Attribute will have a conditional invisibility depending on its Attribute Sets.
     """
 
     _inherit = ["product.template", "attribute.set.owner.mixin"]
@@ -52,5 +52,18 @@ class ProductTemplate(models.Model):
             self.attribute_set_id = self.categ_id.attribute_set_id
 
 
-# TODO : add the 'attribute.set.owner.mixin' to product.product in order to display
-# Attributes in Variants.
+class ProductProduct(models.Model):
+    """The mixin 'attribute.set.owner.mixin' override the model's fields_view_get()
+    method which will replace the 'attributes_placeholder' by a group made up of all
+    the product.product's Attributes.
+    Each Attribute will have a conditional invisibility depending on its Attribute Sets.
+    """
+
+    _inherit = ["product.product", "attribute.set.owner.mixin"]
+    _name = "product.product"
+
+    attribute_set_id = fields.Many2one(
+        "attribute.set",
+        "Attribute Set",
+        default=lambda self: self._get_default_att_set(),
+    )

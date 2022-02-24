@@ -33,22 +33,18 @@ class AttributeSetOwnerMixin(models.AbstractModel):
         if not self._context.get("include_native_attribute"):
             domain.append(("nature", "=", "custom"))
 
-        attributes = self.env["attribute.attribute"].sudo().search(domain)
+        attributes = self.env["attribute.attribute"].search(domain)
         return attributes._build_attribute_eview()
 
     @api.model
     def remove_native_fields(self, eview):
         """Remove native fields related to native attributes from eview"""
-        native_attrs = (
-            self.env["attribute.attribute"]
-            .sudo()
-            .search(
-                [
-                    ("model_id.model", "=", self._name),
-                    ("attribute_set_ids", "!=", False),
-                    ("nature", "=", "native"),
-                ]
-            )
+        native_attrs = self.env["attribute.attribute"].search(
+            [
+                ("model_id.model", "=", self._name),
+                ("attribute_set_ids", "!=", False),
+                ("nature", "=", "native"),
+            ]
         )
         for attr in native_attrs:
             efield = eview.xpath("//field[@name='{}']".format(attr.name))

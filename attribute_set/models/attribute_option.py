@@ -14,7 +14,7 @@ class AttributeOption(models.Model):
 
     @api.model
     def _get_model_list(self):
-        models = self.env["ir.model"].sudo().search([])
+        models = self.env["ir.model"].search([])
         return [(m.model, m.name) for m in models]
 
     name = fields.Char(translate=True, required=True)

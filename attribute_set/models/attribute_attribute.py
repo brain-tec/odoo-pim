@@ -157,7 +157,7 @@ class AttributeAttribute(models.Model):
                     kwargs["domain"] = "[('id', 'in', %s)]" % ids
                 # Add color options if the attribute's Relational Model
                 # has a color field
-                relation_model_obj = self.sudo().env[self.relation_model_id.model]
+                relation_model_obj = self.env[self.relation_model_id.model]
                 if "color" in relation_model_obj.fields_get().keys():
                     kwargs["options"] = "{'color_field': 'color', 'no_create': True}"
             elif self.nature == "custom":
@@ -294,7 +294,7 @@ class AttributeAttribute(models.Model):
             return super().create(vals)
 
         if vals.get("relation_model_id"):
-            model = self.env["ir.model"].sudo().browse(vals["relation_model_id"])
+            model = self.env["ir.model"].browse(vals["relation_model_id"])
             relation = model.model
         else:
             relation = "attribute.option"
@@ -312,7 +312,7 @@ class AttributeAttribute(models.Model):
             # to avoid creating the same default relation_table name for any attribute
             # linked to the same attribute.option or relation_model_id's model.
             if not vals.get("serialized"):
-                att_model_id = self.env["ir.model"].sudo().browse(vals["model_id"])
+                att_model_id = self.env["ir.model"].browse(vals["model_id"])
                 table_name = (
                     "x_"
                     + att_model_id.model.replace(".", "_")
@@ -329,7 +329,7 @@ class AttributeAttribute(models.Model):
             vals["ttype"] = attr_type
 
         if vals.get("serialized"):
-            field_obj = self.sudo().env["ir.model.fields"]
+            field_obj = self.env["ir.model.fields"]
 
             serialized_fields = field_obj.search(
                 [
@@ -434,7 +434,7 @@ class AttributeAttribute(models.Model):
         for att in self:
             options = att.option_ids
             if self.relation_model_id:
-                options = self.sudo().env[att.relation_model_id.model]
+                options = self.env[att.relation_model_id.model]
                 if "option_ids" in list(vals.keys()):
                     # Delete related attribute.option.wizard if an attribute.option
                     # has been deleted
