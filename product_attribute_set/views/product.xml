@@ -12,7 +12,9 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']/.." position="after">
                 <div>
-                    <label for="attribute_set_id" class="oe_edit_only" attrs="{'invisible':[('is_product_variant', '=', True)]}"/>
+                    <label for="attribute_set_id"
+                           class="oe_edit_only"
+                           attrs="{'invisible':[('is_product_variant', '=', True)]}"/>
                     <field
                         name="attribute_set_id"
                         nolabel="1"
@@ -53,7 +55,7 @@
     <record id="product_normal_form_view" model="ir.ui.view">
         <field name="name">product.product.form</field>
         <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
         <field name="arch" type="xml">
             <xpath expr="//label[@for='attribute_set_id']/.." position="after">
                 <label for="attribute_set_id" class="oe_edit_only" />
