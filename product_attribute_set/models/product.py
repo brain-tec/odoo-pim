@@ -67,3 +67,13 @@ class ProductProduct(models.Model):
         "Attribute Set",
         default=lambda self: self._get_default_att_set(),
     )
+
+    def _get_default_att_set(self):
+        """Fill default Product's attribute_set with its Category's
+        default attribute_set."""
+        default_categ_id_id = self._get_default_category_id()
+        if default_categ_id_id:
+            default_categ_id = self.env["product.category"].search(
+                [("id", "=", default_categ_id_id.id)]
+            )
+            return default_categ_id.attribute_set_id.id
