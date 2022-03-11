@@ -12,12 +12,17 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']/.." position="after">
                 <div>
-                    <label for="attribute_set_id" class="oe_edit_only" />
+                    <label
+                        for="attribute_set_id"
+                        class="oe_edit_only"
+                        attrs="{'invisible':[('is_product_variant', '=', True)]}"
+                    />
                     <field
                         name="attribute_set_id"
                         nolabel="1"
                         context="{'default_model_id': %(product.model_product_template)d}"
                         domain="[('model_id.model', '=', 'product.template')]"
+                        attrs="{'invisible':[('is_product_variant', '=', True)]}"
                     />
                 </div>
             </xpath>
@@ -48,4 +53,22 @@
             </xpath>
         </field>
     </record>
+
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='attribute_set_id']/.." position="after">
+                <label for="attribute_set_id" class="oe_edit_only" />
+                <field
+                    name="attribute_set_id"
+                    nolabel="1"
+                    context="{'default_model_id': %(product.model_product_product)d}"
+                    domain="[('model_id.model', '=', 'product.product')]"
+                />
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
