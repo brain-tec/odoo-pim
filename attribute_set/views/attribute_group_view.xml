@@ -7,10 +7,12 @@
                 <group>
                     <field name="name" string="Group name" class="oe_inline" />
                     <field name="sequence" class="oe_inline" />
-                    <!-- Decided to filter model_id only by products 15.03.2022-->
-                    <field name="model_id"
-                           domain="['|', ('model', '=', 'product.product'), ('model', '=', 'product.template')]"
-                           class="oe_inline"/>
+                    <!-- decided to filter model_id only by products 15.03.2022-->
+                    <field
+                        name="model_id"
+                        domain="['|', ('model', '=', 'product.product'), ('model', '=', 'product.template')]"
+                        class="oe_inline"
+                    />
                 </group>
             </form>
         </field>
@@ -22,7 +24,10 @@
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <!-- decided to filter model_id only by products 15.03.2022-->
-                <field name="model_id" domain="['|', ('model', '=', 'product.product'), ('model', '=', 'product.template')]"/>
+                <field
+                    name="model_id"
+                    domain="['|', ('model', '=', 'product.product'), ('model', '=', 'product.template')]"
+                />
                 <button
                     string="Sort Attribute"
                     name="%(attribute_attribute_sort_action)d"

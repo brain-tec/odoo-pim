@@ -42,7 +42,10 @@
             <tree>
                 <field name="name" />
                 <!-- decided to filter model_id only by products 15.03.2022-->
-                <field name="model_id" domain="['|', ('model', '=', 'product.product'), ('model', '=', 'product.template')]"/>
+                <field
+                    name="model_id"
+                    domain="['|', ('model', '=', 'product.product'), ('model', '=', 'product.template')]"
+                />
             </tree>
         </field>
     </record>
