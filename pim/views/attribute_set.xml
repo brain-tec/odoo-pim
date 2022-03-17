@@ -15,9 +15,10 @@
             name="context"
             eval="{'default_model_id': ref('product.model_product_template')}"
         />
+        <!-- decided to filter model_id only by products 15.03.2022-->
         <field
             name="domain"
-            eval="[('model_id', '=', ref('product.model_product_template'))]"
+            eval="['|', ('model_id', '=', ref('product.model_product_product')), ('model_id', '=', ref('product.model_product_template'))]"
         />
         <field name="help" />
     </record>
