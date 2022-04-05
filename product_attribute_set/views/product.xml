@@ -71,4 +71,22 @@
         </field>
     </record>
 
+    <record id="product_variant_easy_edit_view" model="ir.ui.view">
+        <field name="name">.view.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page
+                        name="product_attributes"
+                        string="Attributes"
+                    >
+                        <separator name="attributes_placeholder" />
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
