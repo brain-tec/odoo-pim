@@ -26,10 +26,18 @@ class AttributeSetOwnerMixin(models.AbstractModel):
     def _build_attribute_eview(self):
         """Override Attribute's method _build_attribute_eview() to build an
         attribute eview with the mixin model's attributes"""
-        domain = [
-            ("model_id.model", "=", self._name),
-            ("attribute_set_ids", "!=", False),
-        ]
+        if self._name != 'product.product':
+            domain = [
+                ("model_id.model", "=", self._name),
+                ("attribute_set_ids", "!=", False),
+            ]
+        else:
+            domain = [
+                ("attribute_set_ids", "!=", False),
+                '|',
+                ("model_id.model", "=", self._name),
+                ("model_id.model", "=", "product.template"),
+            ]
         if not self._context.get("include_native_attribute"):
             domain.append(("nature", "=", "custom"))
 

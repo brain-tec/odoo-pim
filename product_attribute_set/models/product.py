@@ -37,7 +37,19 @@ class ProductTemplate(models.Model):
         if not vals.get("attribute_set_id") and vals.get("categ_id"):
             category = self.env["product.category"].browse(vals["categ_id"])
             vals["attribute_set_id"] = category.attribute_set_id.id
-        return super().create(vals)
+        product_template = super().create(vals)
+        if product_template.attribute_set_id:
+            vals_to_write = {'attribute_set_id': product_template.attribute_set_id.id}
+            attributes = self.env["attribute.attribute"].search([
+                ("model_id.model", "=", self._name),
+                ("attribute_set_ids", "!=", False),
+            ])
+            for attribute in attributes:
+                vals_to_write[attribute.name] = product_template[attribute.name]
+            product_template.product_variant_ids.write(
+                self.env['product.product']._convert_to_write(vals_to_write)
+            )
+        return product_template
 
     def write(self, vals):
         if not vals.get("attribute_set_id") and vals.get("categ_id"):
