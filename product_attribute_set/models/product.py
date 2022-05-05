@@ -10,7 +10,8 @@ class ProductTemplate(models.Model):
     """The mixin 'attribute.set.owner.mixin' override the model's fields_view_get()
     method which will replace the 'attributes_placeholder' by a group made up of all
     the product.template's Attributes.
-    Each Attribute will have a conditional invisibility depending on its Attribute Sets.
+    Each Attribute will have a conditional invisibility depending on its
+    Attribute Sets.
     """
 
     _inherit = ["product.template", "attribute.set.owner.mixin"]
@@ -37,19 +38,23 @@ class ProductTemplate(models.Model):
         if not vals.get("attribute_set_id") and vals.get("categ_id"):
             category = self.env["product.category"].browse(vals["categ_id"])
             vals["attribute_set_id"] = category.attribute_set_id.id
-        product_template = super().create(vals)
-        if product_template.attribute_set_id:
-            vals_to_write = {'attribute_set_id': product_template.attribute_set_id.id}
+        pt = super().create(vals)
+        if pt.attribute_set_id:
+            vals_to_write = {
+                'attribute_set_id':
+                    pt.attribute_set_id.linked_attribute_set_id.id,
+            }
             attributes = self.env["attribute.attribute"].search([
                 ("model_id.model", "=", self._name),
                 ("attribute_set_ids", "!=", False),
+                ("linked_attribute_attribute_id", "!=", False),
             ])
             for attribute in attributes:
-                vals_to_write[attribute.name] = product_template[attribute.name]
-            product_template.product_variant_ids.write(
+                vals_to_write[attribute.name] = pt[attribute.name]
+            pt.product_variant_ids.write(
                 self.env['product.product']._convert_to_write(vals_to_write)
             )
-        return product_template
+        return pt
 
     def write(self, vals):
         if not vals.get("attribute_set_id") and vals.get("categ_id"):
