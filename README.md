@@ -5,7 +5,7 @@
 
 <!-- /!\ do not modify above this line -->
 
-# odoo-pim
+# odoo-pim: Fully customized for GE project
 
 TODO: add repo description.
 

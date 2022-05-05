@@ -15,7 +15,8 @@ class ProductCategory(models.Model):
     )
 
     def write(self, vals):
-        """Fill Category's products with Category's default attribute_set_id if empty"""
+        """Fill Category's products with Category's default attribute_set_id if
+        empty"""
         super().write(vals)
         for record in self:
             if vals.get("attribute_set_id"):
