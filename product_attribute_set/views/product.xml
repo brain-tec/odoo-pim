@@ -83,6 +83,9 @@
                     </page>
                 </notebook>
             </xpath>
+            <field name="name" position="after">
+                <field name="attribute_set_id" invisible="1"/>
+            </field>
         </field>
     </record>
 

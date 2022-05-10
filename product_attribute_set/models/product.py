@@ -94,3 +94,25 @@ class ProductProduct(models.Model):
                 [("id", "=", default_categ_id_id.id)]
             )
             return default_categ_id.attribute_set_id.id
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        products = super(ProductProduct, self).create(vals_list)
+        for product in products:
+            if product.product_tmpl_id.attribute_set_id.linked_attribute_set_id:
+                vals_to_write = {
+                    'attribute_set_id': product.product_tmpl_id.attribute_set_id.linked_attribute_set_id.id,
+                }
+                for att in product.product_tmpl_id.attribute_set_id.linked_attribute_set_id.attribute_ids:
+                    if 'select' not in att.attribute_type:
+                        vals_to_write[att.field_id.name] = product.product_tmpl_id[att.field_id.name]
+                    elif att.attribute_type == 'select':
+                        vals_to_write[att.field_id.name] = \
+                            product.product_tmpl_id[att.field_id.name].mapped('linked_attribute_option_id.id')
+                    else:  # multiselect
+                        vals_to_write[att.field_id.name] = [
+                            (6, 0,
+                             product.product_tmpl_id[att.field_id.name].mapped('linked_attribute_option_id.id'))
+                        ]
+                product.write(vals_to_write)
+        return products
