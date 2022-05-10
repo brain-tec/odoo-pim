@@ -2,7 +2,7 @@
 # @author Benoit Guillot <benoit.guillot@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ProductCategory(models.Model):
@@ -13,6 +13,11 @@ class ProductCategory(models.Model):
         "Default Attribute Set",
         context={"default_model_id": "product.template"},
     )
+
+    @api.onchange('parent_id')
+    def _onchange_parent_id(self):
+        if not self.attribute_set_id and self.parent_id and self.parent_id.attribute_set_id:
+            self.attribute_set_id = self.parent_id.attribute_set_id.id
 
     def write(self, vals):
         """Fill Category's products with Category's default attribute_set_id if
