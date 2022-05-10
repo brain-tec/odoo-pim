@@ -46,6 +46,12 @@ class AttributeSet(models.Model):
         if linked_sets:
             if 'linked_attribute_set_id' in vals:
                 del vals['linked_attribute_set_id']
+            if 'attribute_ids' in vals:
+                self.ensure_one()  # for simplicity, otherwise refactor
+                vals['attribute_ids'] = [
+                    (6, 0,
+                     self.attribute_ids.mapped('linked_attribute_attribute_id.id')),
+                ]
             if vals:
                 linked_sets.write(vals)
         return ret
