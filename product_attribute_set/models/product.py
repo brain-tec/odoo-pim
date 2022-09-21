@@ -35,9 +35,6 @@ class ProductTemplate(models.Model):
 
     @api.model
     def create(self, vals):
-        if not vals.get("attribute_set_id") and vals.get("categ_id"):
-            category = self.env["product.category"].browse(vals["categ_id"])
-            vals["attribute_set_id"] = category.attribute_set_id.id
         pt = super().create(vals)
         if pt.attribute_set_id:
             vals_to_write = {
@@ -56,16 +53,10 @@ class ProductTemplate(models.Model):
             )
         return pt
 
-    def write(self, vals):
-        if not vals.get("attribute_set_id") and vals.get("categ_id"):
-            category = self.env["product.category"].browse(vals["categ_id"])
-            vals["attribute_set_id"] = category.attribute_set_id.id
-        return super().write(vals)
-
     @api.onchange("categ_id")
     def update_att_set_onchange_categ_id(self):
         self.ensure_one()
-        if self.categ_id and not self.attribute_set_id:
+        if self.categ_id and self.categ_id.attribute_set_id and not self.attribute_set_id:
             self.attribute_set_id = self.categ_id.attribute_set_id
 
 
