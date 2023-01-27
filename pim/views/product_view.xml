@@ -8,6 +8,7 @@
         <field name="priority">90</field>
         <field name="arch" type="xml">
             <tree string="Product">
+                <field name="sequence" widget="handle" />
                 <field
                     name="image_512"
                     widget='image'
@@ -51,5 +52,8 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,kanban,form</field>
         <field name="view_id" ref="pim.pim_product_template_tree_view" />
+        <field
+            name="context"
+        >{"include_native_attribute": 1, "search_default_filter_to_sell": 1}</field>
     </record>
 </odoo>
