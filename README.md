@@ -1,12 +1,19 @@
-[![Build Status](https://travis-ci.org/OCA/odoo-pim.svg?branch=12.0)](https://travis-ci.org/oca/odoo-pim)
-[![codecov](https://codecov.io/gh/shopinvader/odoo-pim/branch/10.0/graph/badge.svg)](https://codecov.io/gh/shopinvader/odoo-pim/branch/10.0)
-[![Code Climate](https://codeclimate.com/github/shopinvader/odoo-pim/badges/gpa.svg)](https://codeclimate.com/github/shopinvader/odoo-pim)
 
-Odoo PIM
-========
+[![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/odoo-pim&target_branch=12.0)
+[![Pre-commit Status](https://github.com/OCA/odoo-pim/actions/workflows/pre-commit.yml/badge.svg?branch=12.0)](https://github.com/OCA/odoo-pim/actions/workflows/pre-commit.yml?query=branch%3A12.0)
+[![Build Status](https://github.com/OCA/odoo-pim/actions/workflows/test.yml/badge.svg?branch=12.0)](https://github.com/OCA/odoo-pim/actions/workflows/test.yml?query=branch%3A12.0)
+[![codecov](https://codecov.io/gh/OCA/odoo-pim/branch/12.0/graph/badge.svg)](https://codecov.io/gh/OCA/odoo-pim)
+[![Translation Status](https://translation.odoo-community.org/widgets/odoo-pim-12-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/odoo-pim-12-0/?utm_source=widget)
+
+<!-- /!\ do not modify above this line -->
+
+# Odoo PIM
 
 Experimental addons developped to add PIM functionalities to Odoo
 
+<!-- /!\ do not modify below this line -->
+
+<!-- prettier-ignore-start -->
 
 [//]: # (addons)
 
@@ -24,13 +31,17 @@ addon | version | maintainers | summary
 
 [//]: # (end addons)
 
-Translation Status
-------------------
+<!-- prettier-ignore-end -->
 
-[![Translation status](https://translation.odoo-community.org/widgets/odoo-pim-12-0/-/multi-auto.svg)](https://translation.odoo-community.org/engage/odoo-pim-12-0/?utm_source=widget)
+## Licenses
+
+This repository is licensed under [AGPL-3.0](LICENSE).
+
+However, each module can have a totally different license, as long as they adhere to Odoo Community Association (OCA)
+policy. Consult each module's `__manifest__.py` file, which contains a `license` key
+that explains its license.
 
 ----
-
-OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit organization whose
-mission is to support the collaborative development of Odoo features and
-promote its widespread use.
+OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit
+organization whose mission is to support the collaborative development of Odoo features
+and promote its widespread use.
