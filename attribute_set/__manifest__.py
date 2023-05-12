@@ -1,6 +1,6 @@
 {
     "name": "Attribute Set",
-    "version": "14.0.1.3.1",
+    "version": "14.0.1.3.2",
     "category": "Generic Modules/Others",
     "license": "AGPL-3",
     "author": "Akretion,Odoo Community Association (OCA)",
@@ -18,4 +18,5 @@
     ],
     "external_dependencies": {"python": ["unidecode"]},
     "installable": True,
+    "post_load": "post_load_hook",
 }
