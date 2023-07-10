@@ -32,9 +32,46 @@ class AttributeAttribute(models.Model):
                  ('name', '=', self.field_id.name)],
                 limit=1,
             )
+
+            # IMPORTANT!
+            #
+            # ------------------------------------------------------------------------------------------------
+            # Accessing the DB table directly to jump over the security and python restrictions is DANGEROUS.
+            # We are aware of the risks and accept them as due to the current project state we are not allowed
+            # to spend a big amount of resources on trying to patch/find a core place where to take this
+            # case into consideration, or to do this module from scratch.
+            #
+            # In addition, be aware that this module is being loaded from a frozen state of a 'BT' migration
+            # because it seems to have been not correctly migrated by the owners and will not be most probably
+            # ------------------------------------------------------------------------------------------------
+            #
+            # This Query 'fixes' an issue with the Variant's fields creation, where the state is set to 'base'
+            # by the system when creating those and relating them to the 'template' model.
+            # If the state is not set as 'manual' a User Error of type:
+            # 'Properties of base fields cannot be altered in this manner!'
+            # Will be raised.
+            # https://github.com/brain-tec/odoo/blob/15.0/odoo/addons/base/models/ir_model.py#L1340
+            #
+            # So, what we are doing is to directly access the DB to change this field because we can not
+            # perform a write method to change it, as it is not allowed by python constrains.
+            # After our changes directly in the DB table record, we invalidate the cache of this record so
+            # the changes takes effect immediately as the record is read again from the DB and the
+            # process continues correctly.
+            #
+            if new_field.model == 'product.product' and new_field.state != 'manual':
+                self.env.cr.execute(
+                    "UPDATE ir_model_fields "
+                    "SET state='manual'"
+                    "WHERE id = %s",
+                    (new_field.id,)
+                )
+                new_field.invalidate_cache()
+
             if new_field:
+                nature = 'custom' if new_field.model == 'product.product' else 'native'
                 new_attribute = self.create({
-                    'nature': 'native',
+                    'name': new_field.name,
+                    'nature': nature,
                     'model_id': new_model_id,
                     'field_id': new_field.id,
                     'attribute_group_id': attribute_group_id,
@@ -48,6 +85,7 @@ class AttributeAttribute(models.Model):
                     'option_ids': None,
                     'attribute_type': self.attribute_type,
                     'serialized': self.serialized,
+                    'state': 'manual',
                 })
                 self.env.cr.execute(
                     "UPDATE ir_model_fields "
