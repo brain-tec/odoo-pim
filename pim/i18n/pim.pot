@@ -198,11 +198,6 @@ msgid "If you have setup a catch-all email domain redirected to the Odoo server,
 msgstr ""
 
 #. module: pim
-#: model:ir.model.fields,field_description:pim.field_pim_config_settings__partner_autocomplete_insufficient_credit
-msgid "Insufficient credit"
-msgstr ""
-
-#. module: pim
 #: selection:pim.config.settings,product_weight_in_lbs:0
 msgid "Kilogram"
 msgstr ""
@@ -271,16 +266,6 @@ msgstr ""
 #. module: pim
 #: selection:pim.config.settings,product_weight_in_lbs:0
 msgid "Pound"
-msgstr ""
-
-#. module: pim
-#: model:ir.model.fields,field_description:pim.field_pim_config_settings__snailmail_duplex
-msgid "Print Both sides"
-msgstr ""
-
-#. module: pim
-#: model:ir.model.fields,field_description:pim.field_pim_config_settings__snailmail_color
-msgid "Print In Color"
 msgstr ""
 
 #. module: pim
