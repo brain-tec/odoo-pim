@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-03-17 18:06+0000\n"
+"PO-Revision-Date: 2025-05-13 12:24+0000\n"
 "Last-Translator: davidbeckercbl <becker@cbl-computer.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: attribute_set
 #: model:res.groups,name:attribute_set.group_advanced_attribute_set
@@ -274,7 +274,7 @@ msgstr "Domäne"
 #. module: attribute_set
 #: model:ir.model.fields,field_description:attribute_set.field_attribute_attribute__tracking
 msgid "Enable Ordered Tracking"
-msgstr ""
+msgstr "Aktiviere Bestell-Nachverfolgung"
 
 #. module: attribute_set
 #. odoo-python
@@ -705,12 +705,12 @@ msgstr "Text"
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_group__sequence
 msgid "The Group order in his attribute's Set"
-msgstr ""
+msgstr "Die Gruppen-Reihenfolge in seinem Attributsatz"
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__sequence
 msgid "The attribute's order in his group"
-msgstr ""
+msgstr "Die Attributsreihenfolge in seiner Gruppe"
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__related
@@ -776,6 +776,13 @@ msgid ""
 "\n"
 "                    If the button is not visible, you need to erase the Domain value                    and Save first."
 msgstr ""
+"Benutzen Sie den 'Lade Attribut-Optionen'-Knopf oder spezifizieren Sie eine "
+"Domäne\n"
+"                    um die verfügbaren Optionen, die mit dem relationalen "
+"Modell verknüpft sind, zu definieren.\n"
+"\n"
+"                    Sollte der Knopf nicht sichtbar sein, so müssen Sie erst "
+"die Domäne leeren                     und speichern."
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__relation_table
@@ -823,11 +830,15 @@ msgid ""
 "Specify a Python expression defining a list of triplets.\n"
 "For example : `[('color', '=', 'red')]`"
 msgstr ""
+"`%(domain)s` ist ein ungültiger Domänenname.\n"
+"Spezifizieren Sie einen Python-Ausdruck als Triplet-Liste.\n"
+"Zum Beispiel : `[('color', '=', 'red')]`"
 
 #. module: attribute_set
 #: model_terms:ir.ui.view,arch_db:attribute_set.attribute_option_wizard_form_view
+#, fuzzy
 msgid "options_placeholder"
-msgstr ""
+msgstr "options_placeholder"
 
 #. module: attribute_set
 #: model_terms:ir.ui.view,arch_db:attribute_set.attribute_option_wizard_form_view
