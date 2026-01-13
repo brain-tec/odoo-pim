@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-01-28 11:06+0000\n"
+"PO-Revision-Date: 2026-01-12 17:42+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: attribute_set
 #: model:res.groups,name:attribute_set.group_advanced_attribute_set
@@ -70,14 +70,14 @@ msgstr "Opzioni attributo"
 #: model:ir.model.fields,field_description:attribute_set.field_attribute_set_owner_mixin__attribute_set_id
 #: model_terms:ir.ui.view,arch_db:attribute_set.attribute_set_form_view
 msgid "Attribute Set"
-msgstr "Set attibuto"
+msgstr "Impostazione attibuto"
 
 #. module: attribute_set
 #: model:ir.actions.act_window,name:attribute_set.attribute_set_form_action
 #: model:ir.model.fields,field_description:attribute_set.field_attribute_attribute__attribute_set_ids
 #: model:ir.ui.menu,name:attribute_set.menu_attribute_set_action
 msgid "Attribute Sets"
-msgstr "Set attributo"
+msgstr "Impostazioni attributo"
 
 #. module: attribute_set
 #: model:ir.model.fields,field_description:attribute_set.field_attribute_attribute__attribute_type
@@ -87,7 +87,7 @@ msgstr "Tipo attributo"
 #. module: attribute_set
 #: model:ir.model,name:attribute_set.model_attribute_set_owner_mixin
 msgid "Attribute set owner mixin"
-msgstr "Mixin proprietario set attibuto"
+msgstr "Mixin proprietario impostazione attibuto"
 
 #. module: attribute_set
 #: model:ir.actions.act_window,name:attribute_set.attribute_attribute_form_action
@@ -140,7 +140,7 @@ msgstr "Annulla"
 #. module: attribute_set
 #: model:ir.model.fields.selection,name:attribute_set.selection__attribute_attribute__attribute_type__char
 msgid "Char"
-msgstr "Char"
+msgstr "Carattere"
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__compute
@@ -179,7 +179,7 @@ msgstr "Colonna che fa riferimento al record nella tabella comodel"
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__column1
 msgid "Column referring to the record in the model table"
-msgstr "Colonna che fa riferimento al record nella tabella model"
+msgstr "Colonna che fa riferimento al record nella tabella del modello"
 
 #. module: attribute_set
 #: model:ir.model.fields,field_description:attribute_set.field_attribute_attribute__complete_name
@@ -309,7 +309,7 @@ msgstr "Tipo campo"
 #. module: attribute_set
 #: model:ir.model.fields.selection,name:attribute_set.selection__attribute_attribute__attribute_type__float
 msgid "Float"
-msgstr "Float"
+msgstr "Numero reale"
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__relation_field
@@ -364,7 +364,7 @@ msgstr ""
 "Se selezionata, tutti i record del modello obiettivo verranno inclusi\n"
 "in un risultato raggruppato (es. filtri 'Raggruppa per', colonne Kanban, "
 "ecc.).\n"
-"Notare che questo può ridrre drasticamente le prestazioni se il modello "
+"Notare che questo può ridurre drasticamente le prestazioni se il modello "
 "obiettivo\n"
 "del campo contiene molti record; normalmente utilizzato in modelli con\n"
 "pochi record (es. fasi, posizioni lavorative, tipi evento, ecc.)."
@@ -385,7 +385,7 @@ msgstr ""
 "            'x_custom_json_attrs' (un JSON contenente tutti i valori dei "
 "campi serializzati)\n"
 "            anziché creare una nuova colonna SQL per questo\n"
-"            campo dell'attributo. Utile per amentare la velocità delle "
+"            campo dell'attributo. Utile per aumentare la velocità delle "
 "richieste nella creazione\n"
 "            di un elevato numero di attributi."
 
@@ -422,12 +422,12 @@ msgstr "Indicizzato"
 #. module: attribute_set
 #: model:ir.model.fields.selection,name:attribute_set.selection__attribute_attribute__attribute_type__integer
 msgid "Integer"
-msgstr "Integer"
+msgstr "Intero"
 
 #. module: attribute_set
 #: model:ir.model.fields,field_description:attribute_set.field_attribute_attribute__field_id
 msgid "Ir Model Fields"
-msgstr "Campo modello ir"
+msgstr "Campi modello ir"
 
 #. module: attribute_set
 #. odoo-python
@@ -618,7 +618,7 @@ msgstr "Cerca opzioni attributo"
 #. module: attribute_set
 #: model_terms:ir.ui.view,arch_db:attribute_set.view_attribute_set_search
 msgid "Search Attribute Sets"
-msgstr "Cerca set attributo"
+msgstr "Cerca impostazioni attributo"
 
 #. module: attribute_set
 #: model_terms:ir.ui.view,arch_db:attribute_set.attribute_group_search_view
@@ -699,7 +699,7 @@ msgstr "Archiviato"
 #. module: attribute_set
 #: model:ir.model.fields.selection,name:attribute_set.selection__attribute_attribute__attribute_type__text
 msgid "Text"
-msgstr "Text"
+msgstr "Testo"
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_group__sequence
@@ -718,7 +718,7 @@ msgid ""
 "of field names."
 msgstr ""
 "Il corrispondente campo relativo. Questa deve essere una lista separata da "
-"pnti di nomi di campi."
+"punti di nomi di campi."
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__model_id
@@ -734,7 +734,7 @@ msgid ""
 msgstr ""
 "Il dominio opzionale per limitare i possibili valori per campi collegati, "
 "definiti come una espressione Python che definisce un elenco di triplette. "
-"Per sempio: [('color','=','red')]"
+"Per esempio: [('color','=','red')]"
 
 #. module: attribute_set
 #: model:ir.model.fields,help:attribute_set.field_attribute_attribute__sequence_group
@@ -752,7 +752,7 @@ msgid ""
 "This is a technical field in order to build filters on this one to "
 "avoidaccess on ir.model"
 msgstr ""
-"Questo è un campo tecnico per creare filtri su questo per evitare l'accecco "
+"Questo è un campo tecnico per creare filtri su questo per evitare l'accesso "
 "a ir.model"
 
 #. module: attribute_set
@@ -829,7 +829,7 @@ msgid ""
 "Specify a Python expression defining a list of triplets.\n"
 "For example : `[('color', '=', 'red')]`"
 msgstr ""
-"`%(domain)s` non è un nume dominio valito.\n"
+"`%(domain)s` non è un nume dominio valido.\n"
 "Indicare una espressione Python che definisce una lista di triplette.\n"
 "Per esempio : `[('color', '=', 'red')]`"
 
