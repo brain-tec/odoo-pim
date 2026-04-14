@@ -4,7 +4,7 @@
 
 {
     "name": "Website Attribute Set",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Website/Website",
     "license": "AGPL-3",
     "author": "Kencove, Odoo Community Association (OCA)",
@@ -13,6 +13,7 @@
     "depends": [
         "attribute_set",
         "product_attribute_set",
+        "pim",
         "website",
         "website_sale",
         "website_sale_comparison",
@@ -22,13 +23,14 @@
         "views/variant_templates.xml",
         "views/templates.xml",
         "views/website_sale_comparison_template.xml",
+        "views/pim_view.xml",
     ],
     "demo": [
         "demo/website_attribute_demo.xml",
     ],
     "assets": {
         "web.assets_frontend": [
-            "website_attribute_set/static/src/js/additional_attributes_filter.esm.js",
+            "website_attribute_set/static/src/interactions/**/*",
         ],
     },
     "installable": True,
