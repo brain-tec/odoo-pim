@@ -10,9 +10,11 @@ setuptools.setup(
     install_requires=[
         'odoo-addon-attribute_set>=16.0dev,<16.1dev',
         'odoo-addon-attribute_set_completeness>=16.0dev,<16.1dev',
+        'odoo-addon-attribute_set_mass_edit>=16.0dev,<16.1dev',
         'odoo-addon-attribute_set_searchable>=16.0dev,<16.1dev',
         'odoo-addon-pim>=16.0dev,<16.1dev',
         'odoo-addon-product_attribute_set>=16.0dev,<16.1dev',
+        'odoo-addon-product_attribute_set_completeness>=16.0dev,<16.1dev',
         'odoo-addon-product_search_multi_value>=16.0dev,<16.1dev',
     ],
     classifiers=[
