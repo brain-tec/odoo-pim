@@ -17,11 +17,6 @@ msgstr ""
 "X-Generator: Weblate 5.15.2\n"
 
 #. module: website_attribute_set
-#: model_terms:ir.ui.view,arch_db:website_attribute_set.variants
-msgid "<span class=\"sign_badge_price_extra\">✓</span>"
-msgstr "<span class=\"sign_badge_price_extra\">✓</span>"
-
-#. module: website_attribute_set
 #: model_terms:ir.ui.view,arch_db:website_attribute_set.filter_select_attributes
 #: model_terms:ir.ui.view,arch_db:website_attribute_set.product_additional_attribute_filters_form
 msgid "All"
@@ -113,19 +108,19 @@ msgid "Display Name"
 msgstr "Schermnaam"
 
 #. module: website_attribute_set
-#: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__e_com_filter
-msgid "E Com Filter"
-msgstr "E-com filter"
-
-#. module: website_attribute_set
-#: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__e_com_specification
-msgid "E Com Specification"
-msgstr "E-com specificatie"
-
-#. module: website_attribute_set
 #: model_terms:ir.ui.view,arch_db:website_attribute_set.attribute_attribute_form_view
 msgid "E-Commerce"
 msgstr "E-commerce"
+
+#. module: website_attribute_set
+#: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__e_com_digit_grouping
+msgid "E-Commerce Digit Grouping"
+msgstr ""
+
+#. module: website_attribute_set
+#: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__e_com_filter
+msgid "E-Commerce Filter"
+msgstr ""
 
 #. module: website_attribute_set
 #: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__e_com_multi_select
@@ -158,6 +153,11 @@ msgid "E-Commerce Show Count"
 msgstr "E-commerce aantal weergeven"
 
 #. module: website_attribute_set
+#: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__e_com_specification
+msgid "E-Commerce Specification"
+msgstr ""
+
+#. module: website_attribute_set
 #: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__e_com_visibility
 msgid "E-Commerce Visibility"
 msgstr "E-commerce zichtbaarheid"
@@ -175,6 +175,15 @@ msgid ""
 msgstr ""
 "Toon voor numerieke kenmerken (geheel getal/float) min/max bereik-invoer\n"
 "        in plaats van individuele waardeselectie in het winkelfilter."
+
+#. module: website_attribute_set
+#: model:ir.model.fields,help:website_attribute_set.field_attribute_attribute__e_com_digit_grouping
+msgid ""
+"For numeric attributes (integer/float), show the value with a\n"
+"        thousands separator on the website (e.g. 42,000). Disable it for "
+"years,\n"
+"        serial numbers or codes."
+msgstr ""
 
 #. module: website_attribute_set
 #: model:ir.model.fields,field_description:website_attribute_set.field_attribute_attribute__id
@@ -298,6 +307,20 @@ msgstr ""
 "een zoekmethode)."
 
 #. module: website_attribute_set
+#: model_terms:ir.ui.view,arch_db:website_attribute_set.variants
+msgid "Yes"
+msgstr ""
+
+#. module: website_attribute_set
 #: model:ir.ui.menu,name:website_attribute_set.menu_public_category
 msgid "eCommerce Categories"
 msgstr "E-commerce categorieën"
+
+#~ msgid "<span class=\"sign_badge_price_extra\">✓</span>"
+#~ msgstr "<span class=\"sign_badge_price_extra\">✓</span>"
+
+#~ msgid "E Com Filter"
+#~ msgstr "E-com filter"
+
+#~ msgid "E Com Specification"
+#~ msgstr "E-com specificatie"

@@ -200,6 +200,14 @@ class BuildViewCase(TransactionCase):
         self.assertIn(f"{self.set_1.id}", group.get("invisible"))
         self.assertIn(f"{self.set_2.id}", group.get("invisible"))
 
+    def test_group_name_with_quote(self):
+        """A quote in a group name must not break the view (issue #290)."""
+        self.group_1.name = "Étiquette de l'UE"
+        eview = self.env["res.partner"]._build_attribute_eview()
+        egroup = eview.find("group/field[@name='x_attr_1']/..")
+        self.assertEqual(egroup.get("string"), "Étiquette de l'ue")
+        self.assertIsNotNone(egroup.find("field[@name='x_attr_2']"))
+
     def test_attribute_order(self):
         eview = self.env["res.partner"]._build_attribute_eview()
         attrs = []
@@ -293,6 +301,22 @@ class BuildViewCase(TransactionCase):
         attr = eview.xpath(f"//field[@name='{self.attr_native_readonly.name}']")
         self.assertTrue(attr[0].get("readonly"))
 
+    def test_include_native_attr_keeps_on_change(self):
+        self._create_attribute(
+            {
+                "nature": "native",
+                "field_id": self.env.ref("base.field_res_partner__country_id").id,
+                "attribute_group_id": self.group_2.id,
+                "attribute_set_ids": [(6, 0, [self.set_1.id])],
+            }
+        )
+        eview = self._get_eview_from_get_views()
+        attr = eview.xpath(
+            "//page[@name='partner_attributes']//field[@name='country_id']"
+        )
+        self.assertEqual(len(attr), 1)
+        self.assertEqual(attr[0].get("on_change"), "1")
+
     def test_no_include_native_attr(self):
         # Run get_views on the test view with no "include_native_attribute_view_ref"
         eview = self._get_eview_from_get_views(include_native_attribute_view_ref=False)
@@ -306,6 +330,26 @@ class BuildViewCase(TransactionCase):
                 f"//page[@name='partner_attributes']//field[@name='{self.attr_native.name}']"
             )
         )
+
+    @users("demo")
+    def test_remove_native_fields_as_plain_user(self):
+        """A user without "Access Rights" must be able to strip native fields.
+
+        ``attribute.attribute`` delegates ``name`` to ``ir.model.fields``, and
+        regular users have no read access on that model, so the attributes must
+        be looked up in sudo.
+
+        The method is called directly, and the record cache emptied first,
+        because going through ``get_views()`` cannot catch the regression:
+        ``_get_view_fields()`` reads the same names in sudo beforehand, leaving
+        them in the record cache, so the un-sudoed read never reaches the
+        database and no access check happens.
+        """
+        native_field_name = self.attr_native.sudo().name
+        eview = etree.fromstring(f"<form><field name='{native_field_name}'/></form>")
+        self.env.invalidate_all()
+        self.env["res.partner"].remove_native_fields(eview)
+        self.assertFalse(eview.xpath(f"//field[@name='{native_field_name}']"))
 
     # TESTS UNLINK
     def test_unlink_custom_attribute(self):

@@ -4,7 +4,7 @@
 
 {
     "name": "Website Attribute Set",
-    "version": "19.0.1.1.4",
+    "version": "19.0.1.2.2",
     "category": "Website/Website",
     "license": "AGPL-3",
     "author": "Kencove, Odoo Community Association (OCA)",
@@ -19,6 +19,7 @@
         "website_sale_comparison",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "views/attribute_attribute_view.xml",
         "views/variant_templates.xml",
         "views/templates.xml",

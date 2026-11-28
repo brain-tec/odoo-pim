@@ -5,7 +5,7 @@
 from collections import defaultdict
 
 from odoo.fields import Domain
-from odoo.http import request
+from odoo.http import request, route
 from odoo.models import BaseModel
 
 from odoo.addons.website_sale.controllers import main
@@ -63,6 +63,24 @@ class WebsiteSale(main.WebsiteSale):
                 except (ValueError, TypeError):
                     continue
         return range_filters
+
+    @route()
+    def shop(self, **post):
+        """Keep every additional attribute filter across the pager pages.
+
+        ``request.params`` keeps only the first occurrence of a repeated query
+        param, so a listing filtered on more than one additional attribute
+        reaches ``website.pager()`` with a single ``additional_attribute_values``
+        entry and the remaining filters are dropped from the page links. Put the
+        whole list back in ``post``, the same way ``website_sale`` does for its
+        own ``attribute_values`` param.
+        """
+        additional_attrib_list = request.httprequest.args.getlist(
+            "additional_attribute_values"
+        )
+        if additional_attrib_list:
+            post["additional_attribute_values"] = additional_attrib_list
+        return super().shop(**post)
 
     def _shop_get_query_url_kwargs(self, search, min_price, max_price, **post):
         result = super()._shop_get_query_url_kwargs(
@@ -261,6 +279,7 @@ class WebsiteSale(main.WebsiteSale):
             attr_type = attribute.attribute_type
             field = request.env["product.template"]._fields.get(field_name)
             sparse_col = getattr(field, "sparse", None) if field else None
+            attr_conditions = []
             if sparse_col:
                 if len(values) > 1 and attribute.e_com_multi_select:
                     all_ids = []
@@ -276,7 +295,7 @@ class WebsiteSale(main.WebsiteSale):
                             )
                         )
                     if all_ids:
-                        conditions.append([("id", "in", list(set(all_ids)))])
+                        attr_conditions.append([("id", "in", list(set(all_ids)))])
                 else:
                     for attr_value in values:
                         ids = _sparse_filter_by_value(
@@ -288,24 +307,31 @@ class WebsiteSale(main.WebsiteSale):
                             attr_value,
                         )
                         if ids:
-                            conditions.append([("id", "in", ids)])
-                continue
-
-            if len(values) > 1 and attribute.e_com_multi_select:
+                            attr_conditions.append([("id", "in", ids)])
+            elif len(values) > 1 and attribute.e_com_multi_select:
                 or_conds = [
                     c
                     for v in values
                     if (c := self._build_attribute_condition(field_name, attr_type, v))
                 ]
                 if or_conds:
-                    conditions.append(Domain.OR(or_conds))
+                    attr_conditions.append(Domain.OR(or_conds))
             else:
                 for attr_value in values:
                     cond = self._build_attribute_condition(
                         field_name, attr_type, attr_value
                     )
                     if cond:
-                        conditions.append(cond)
+                        attr_conditions.append(cond)
+            if attr_conditions:
+                conditions.extend(attr_conditions)
+                # The underlying field exists on every product.template
+                # (native attributes are real fields), so scope the filter to
+                # the products whose attribute set actually carries this
+                # attribute — the same products the facet is rendered for.
+                conditions.append(
+                    [("attribute_set_id", "in", attribute.attribute_set_ids.ids)]
+                )
         return conditions
 
     def _build_attribute_condition(self, field_name, attr_type, attr_value):
